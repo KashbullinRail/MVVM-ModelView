@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        mviewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        mviewModel = ViewModelProvider(this, MainFactory(application, "AndroidFactory"))
+            .get(MainViewModel::class.java)
     }
 
     override fun onStart() {
@@ -26,7 +27,6 @@ class MainActivity : AppCompatActivity() {
             binding.tvOne.text = it
         })
     }
-
 
 
 }
